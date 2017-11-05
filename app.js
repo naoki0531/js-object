@@ -1,15 +1,13 @@
+var APP = APP || {};
 document.addEventListener('DOMContentLoaded', function () {
-  var cardTemplate = document.querySelector('#card-template');
+  var todoData = [
+    {no: '1', title: '買物'},
+    {no: '2', title: '勉強'},
+    {no: '3', title: '申請'}
+  ];
+
   var cardList = document.querySelector('#card-list');
-  for (var i = 1; i <= 10; i++) {
-    var card = document.importNode(cardTemplate, true).content;
-
-    var no = card.querySelector('.no');
-    no.textContent = i;
-
-    var title = card.querySelector('.title');
-    title.textContent = 'カードタイトル';
-
-    cardList.appendChild(card);
+  for (var i = 0; i <= 2; i++) {
+    cardList.appendChild(new APP.Card(todoData[i]).getHtml());
   }
 });
